@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+}
+
+.grid {
+  /* background-color: lightsalmon; */
+  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  grid-template-rows: minmax(20px, auto);
+}
+
+.nested-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px; /* Ancho de la fils */
+  gap: 1em;
+}
+
+.nested-grid > div {
+  border: 1px solid #000;
+  background-color: #f1c40f;
+  padding: 1em;
+  text-align: center;
+}
+
+.grid > div {
+  background-color: lightgray;
+  padding: 1em;
+}
+
+.grid > div:hover {
+  border: 1px solid #f1c40f;
+}

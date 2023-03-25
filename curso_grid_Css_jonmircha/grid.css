@@ -1,0 +1,97 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: sans-serif;
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+a[href="#top"] {
+  margin: 1rem;
+  display: block;
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+h2 {
+  margin-top: 50vh;
+  text-align: center;
+}
+
+img {
+  margin: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.menu {
+  margin-bottom: 100vh;
+  font-size: 125%;
+}
+
+.menu li {
+  margin-bottom: 1rem;
+}
+
+.container {
+  margin: 0 auto;
+  width: 80%;
+  height: 80vh;
+  background-color: #222;
+  border: medium solid #000;
+}
+
+.item {
+  padding: 1rem;
+  font-size: 1.25rem;
+  background-color: #666;
+  border: medium solid #999;
+}
+
+.grid-explicit {
+  display: grid;
+
+  /* Grid de 3cx3r (3 Columnas "c", por 3 filas "r") */
+  grid-template-columns: 50% 100px 1fr;
+  grid-template-rows: 2rem 20vh 30%;
+
+  /* Grid de 5cx4r (5 Columnas "c", por 4 filas "r") */
+  grid-template-columns: repeat(5, 20%); 
+  grid-template-rows: repeat(4, auto); /* auto adapta el tamaño de la fila al contenido del elemento que mas contenido tenga, Generalmente el tamaño de las filas siempre va a depender del contenido que tengan nuestros elementos */
+  grid-template-rows: repeat(4, 25%);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+
+  /* Grid de 4cx5r */
+  grid-template-columns: 20% repeat(2, 30%) 20%;
+  grid-template-rows: repeat(5, auto); /* auto para que se adapten en base al tamaño de su contenido */
+  
+  /* NOTA: Las propiedades grid-column-gap, grid-row-gap y grid-gap ya están obsoletas o "Deprecated" en su remplazo se utilizan column-gap, row-gap y gap */
+
+  grid-column-gap: 2rem; /* Espaciado entre Columnas */
+  grid-row-gap: 1rem; /* Espaciado entre Filas */
+  grid-gap: 100px 0px; /* Es el shorthand para grid-row-gap y grid-column-gap, el primer valor es para row y el segundo para column */
+
+  /* column-gap y row-gap */
+  column-gap: 4rem;
+  row-gap: 2rem;
+
+  /* gap: Se usa para dar espaciado entre filas (row) y columnas (column), el primer valor es para row y el segundo valor es para column */
+  gap: 1vh 1vw;
+  gap: 0;
+}
+
+.grid-explicit .item:nth-child(10) {
+  
+}
