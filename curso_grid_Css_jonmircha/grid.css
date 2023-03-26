@@ -59,6 +59,8 @@ img {
   border: medium solid #999;
 }
 
+/* ------------------ POSICIONAMIENTO EXPLICITA ------------------- */
+
 .grid-explicit {
   display: grid;
 
@@ -67,8 +69,8 @@ img {
   grid-template-rows: 2rem 20vh 30%;
 
   /* Grid de 5cx4r (5 Columnas "c", por 4 filas "r") */
-  grid-template-columns: repeat(5, 20%); 
-  grid-template-rows: repeat(4, auto); /* auto adapta el tamaño de la fila al contenido del elemento que mas contenido tenga, Generalmente el tamaño de las filas siempre va a depender del contenido que tengan nuestros elementos */
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: repeat(4, auto); /* auto adapta el tamaño de la fila al contenido del elemento que mas contenido tenga, con auto el tamaño de las filas siempre va a depender del contenido que tengan nuestros elementos */
   grid-template-rows: repeat(4, 25%);
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -76,7 +78,7 @@ img {
   /* Grid de 4cx5r */
   grid-template-columns: 20% repeat(2, 30%) 20%;
   grid-template-rows: repeat(5, auto); /* auto para que se adapten en base al tamaño de su contenido */
-  
+
   /* NOTA: Las propiedades grid-column-gap, grid-row-gap y grid-gap ya están obsoletas o "Deprecated" en su remplazo se utilizan column-gap, row-gap y gap */
 
   grid-column-gap: 2rem; /* Espaciado entre Columnas */
@@ -92,6 +94,71 @@ img {
   gap: 0;
 }
 
+/* Seleccionamos el elemento 10 */
 .grid-explicit .item:nth-child(10) {
-  
+  color: aqua;
+  /* Las propiedades grid-column-start: , grid-column-end: , grid-row-start: y
+  grid-row-end: permiten definir de que linea a que linea (Grid Line) un elemento acupara un espacio dentro de la grid */
+  grid-column-start: 2; /* Empieza en la linea (Grid Line) 2 de la columna*/
+  grid-column-end: 3; /* Empieza en la linea (Grid Line) 3 de la columna*/
+
+  grid-row-start: 2;/* Empieza en la linea (Grid Line) 2 de la fila */
+  grid-row-end: 3;/* Termina en la linea (Grid Line) 3 de la fila */
+
+  /* Atajo o shortcut de las anteriores propiedades */
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+
+  /* Para combinar celdas en la grid, como en las tablas de excel o word */
+  grid-column: 3 / 5;
+  grid-row: 2 / 3;
+
+  /* grid-area es otro atajo o shortcut, así:
+  grid-area: grid-row-start / grid-row-end / grid-column-start / grid-column-end */
+  grid-area: 2 / 3 / 3 / 5;
 }
+
+/* Seleccionamos el elemento 12 */
+.grid-explicit .item:nth-child(12) {
+  color:  greenyellow;
+  /* Otra manera de posicionar los elementos es diciendole que ocupe varios espacios dependiendo de la posicion donde se encuentre, para eso utilizamos la palabra "span" que traducida significa como "abarcar" */
+  grid-row: span 2;
+  grid-column: span 3;
+}
+
+/* Combinamos las propiedades vistas anteriormente */
+.grid-explicit .item:nth-child(15) { /* Seleccionamos el elemento 15 */
+  color: orange;
+  /* Posicionamos el elemento 15 en la linea 1 de las row y a partir de ahí que se desplase 2 filas hacia abajo, luego que se posicione en la column 1 y de ahí se desplace 2 columnas hacia la derecha */
+  grid-row: 1 / span 2; /* span 3 significa que se desplasara 2 filas no lineas (grid line) */
+  grid-column: 1 / span 2; /* span 3 significa que se desplasara 2 columnas no lineas (grid line) */
+}
+
+/* ------------------ POSICIONAMIENTO CON NOMBRES DE GRID LINES ------------------- */
+
+/* OJO: esta taenica de ponerle nombres a la s grid lines complica un poco mas el uso de grid-css por eso es muy poco utilizada */
+
+.grid-line-names {
+  text-align: center;
+
+  display: grid;
+
+  /* Grid de 3cx3r */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
+  /* Para darle nombres a la lineas (grid lines) de columnas o filas (rows) y no utilizar números, ponemos primero entre llaves el nombre que queremos darle a la linea sequido del tamaño que queremos darle a la columa, que en este caso seria 1fr */
+  grid-template-columns: [linea-c1] 1fr [linea-c2] 1fr [linea-c3] 1fr [linea-c4];
+  /* grid-template-rows: [linea-r1] 1fr [linea-r2] 1fr [linea-r3] 1fr [linea-r4]; */
+  grid-template-rows: [linea-r1] auto [linea-r2] auto [linea-r3] auto [linea-r4];
+}
+
+.grid-line-names .item:nth-child(3) {
+  color: greenyellow;
+  grid-row: linea-r3 / linea-r4;
+  grid-column: linea-c1 / linea-c4;
+  /* OJO: Al ponerle nombres a las Columns y rows el atajo grid-area no funciona  */
+}
+
+/* ----------------------- GRID CON AREAS ------------------------ */
+
