@@ -160,5 +160,36 @@ img {
   /* OJO: Al ponerle nombres a las Columns y rows el atajo grid-area no funciona  */
 }
 
-/* ----------------------- GRID CON AREAS ------------------------ */
+/* ------------ ASIGNANDO NOMBRES A AREAS ESPECIFIAS DE LA GRID -GRID AREAS ------------ */
+
+.grid-areas {
+  display: grid;
+
+  /* Grid de 2cx3r */
+  grid-template-columns: 1fr 200px;
+  grid-template-rows: 100px repeat(2 ,1fr) 60px;
+
+  /* Para asignar nombres a las areas*/
+  grid-template-areas:
+    "header header"
+    "content sidebar"
+    "content ." /* Con el punto le dicimos a grid-css que deje el area vacia */
+    "footer footer";
+}
+
+.header {
+  grid-area: header; /* Utilizamos la propiedad grid-area para asignarle el nombre que anteriormente colocamos en la propiedad grid-template-areas: de la clase .grid-areas que en este caso es header */
+}
+
+.content {
+  grid-area: content; /* Utilizamos la propiedad grid-area para asignarle el nombre que anteriormente colocamos en la propiedad grid-template-areas: de la clase .grid-areas que en este caso es content */
+}
+
+.sidebar {
+  grid-area: sidebar; /* Utilizamos la propiedad grid-area para asignarle el nombre que anteriormente colocamos en la propiedad grid-template-areas: de la clase .grid-areas que en este caso es sidebar */
+}
+
+.footer {
+  grid-area: footer; /* Utilizamos la propiedad grid-area para asignarle el nombre que anteriormente colocamos en la propiedad grid-template-areas: de la clase .grid-areas que en este caso es footer */
+}
 
