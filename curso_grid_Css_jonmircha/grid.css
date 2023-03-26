@@ -165,7 +165,7 @@ img {
 .grid-areas {
   display: grid;
 
-  /* Grid de 2cx3r */
+  /* Grid de 2cx4r */
   grid-template-columns: 1fr 200px;
   grid-template-rows: 100px repeat(2 ,1fr) 60px;
 
