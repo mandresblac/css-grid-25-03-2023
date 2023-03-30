@@ -59,6 +59,7 @@ img {
   border: medium solid #999;
 }
 
+
 /* ------------------ POSICIONAMIENTO EXPLICITA ------------------- */
 
 .grid-explicit {
@@ -134,6 +135,8 @@ img {
   grid-column: 1 / span 2; /* span 3 significa que se desplasara 2 columnas no lineas (grid line) */
 }
 
+
+/* VIDEO 4 */
 /* ------------------ POSICIONAMIENTO CON NOMBRES DE GRID LINES ------------------- */
 
 /* OJO: esta taenica de ponerle nombres a la s grid lines complica un poco mas el uso de grid-css por eso es muy poco utilizada */
@@ -160,7 +163,9 @@ img {
   /* OJO: Al ponerle nombres a las Columns y rows el atajo grid-area no funciona  */
 }
 
-/* ------------ ASIGNANDO NOMBRES A AREAS ESPECIFIAS DE LA GRID -GRID AREAS ------------ */
+
+/* VIDEO 5 */
+/* ------------ ASIGNANDO NOMBRES A AREAS ESPECIFICAS DE LA GRID -GRID AREAS ------------ */
 
 .grid-areas {
   display: grid;
@@ -173,7 +178,7 @@ img {
   grid-template-areas:
     "header header"
     "content sidebar"
-    "content ." /* Con el punto le dicimos a grid-css que deje el area vacia */
+    "content ." /* Con el punto le decimos a grid-css que deje el area vacía */
     "footer footer";
 }
 
@@ -192,4 +197,55 @@ img {
 .footer {
   grid-area: footer; /* Utilizamos la propiedad grid-area para asignarle el nombre que anteriormente colocamos en la propiedad grid-template-areas: de la clase .grid-areas que en este caso es footer */
 }
+
+
+/* VIDEO 6 */
+/* ------------ EJERCICIO GRID IMPLÍCITA ------------ */
+
+.grid-implicit {
+  width: 40%;
+
+  /* display: grid define que una caja sera grid de bloque o grid de línea */
+  /* El valor grid genera un elemento de bloque (Block), o caja grid de bloque,  */
+  display: grid;/* display: grid; hace que el modelo de grid css se aplique en modo block o de bloque */
+
+  /* El valor inline-grid convierte los elementos en elementos en linea (inline) , o caja grid de linea*/
+  display: inline-grid;/* display: inline-grid; hace que el modelo de grid css se aplique en modo inline o en linea */
+
+
+  /* Grid de 4cx3r */
+  grid: repeat(3, 200px) / repeat(4, 1fr);/* rows / columns */
+}
+
+/* 
+Diferencia entre grid explicita y grid implícita 
+
+Grid explicita
+Cuando definimos en grid-template-columns y grid-template-rows definimos las filas y las columnas que estamos esperando recibir.
+
+Grid implícita
+Los elementos que se salen de la cuadricula que hallamos definido toman un tamaño que por defecto les da grid. 
+*/
+
+
+/* VIDEO 7 */
+/* ------------ Flujo de la Grid (Grid Flow) ------------ */
+
+.grid-flow {
+  display: grid;
+
+  /* Grid de 5cx3r */
+  grid: repeat(3, 150px) / repeat(5, 1fr);/* rows / columns */
+
+  /* grid-auto-flow determina cual es el flujo que va a seguir mi cuadricula, su valor por defecto es row, también tiene el valor column */
+  grid-auto-flow: row;
+  grid-auto-flow: column;
+
+  /* grid-auto-rows y grid-auto-columns van a determinar el valor del tamaño que deben de tomar los elementos que estan fuera de la grid explicita, es decir en la grid implícita que genera automáticamente css grid, su valor por defecto es auto */
+  grid-auto-rows: 100px;
+  grid-auto-columns: 50px;
+}
+
+
+/* VIDEO 8 */
 
